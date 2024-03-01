@@ -1,6 +1,5 @@
 import mysql from 'mysql2'
 import { config } from 'dotenv'
-
 config()
 
 const pool = mysql.createPool({
@@ -8,6 +7,6 @@ const pool = mysql.createPool({
     user:process.env.USER,
     password:process.env.PASSWORD,
     database:process.env.DATABASE
-}).promise()
+}).promise();
 
 export{pool}
