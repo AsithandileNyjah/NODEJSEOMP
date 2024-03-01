@@ -34,8 +34,8 @@
         />
       </div>
       <div class="addUseForm-inputs">
-        <label for="userRole">Role:</label>
-        <input v-model="formData.userRole" type="text" id="userRole" required />
+        <label for="userPass">Password:</label>
+        <input v-model="formData.userPass" type="text" id="userPass" required />
       </div>
       <div class="addUseForm-inputs">
         <label for="emailAdd">Email:</label>
@@ -50,7 +50,6 @@
           required
         />
       </div>
-
       <button type="submit" class="btn btn-primary addUseForm-save">
         Save
       </button>
@@ -63,7 +62,7 @@
           <th>Last Name</th>
           <th>Age</th>
           <th>Gender</th>
-          <th>Role</th>
+          <th>User Role</th>
           <th>Email</th>
           <th>Username</th>
           <th>Edit</th>
@@ -101,7 +100,6 @@
         </tr>
       </tbody>
     </table>
-
     <!-- Edit User Form -->
     <form v-if="editedUser" @submit.prevent="saveEditedUser">
       <!-- Your form inputs go here -->
@@ -142,15 +140,6 @@
         />
       </div>
       <div>
-        <label for="editUserRole">Role:</label>
-        <input
-          v-model="formData.userRole"
-          type="text"
-          id="editUserRole"
-          required
-        />
-      </div>
-      <div>
         <label for="editEmailAdd">Email:</label>
         <input
           v-model="formData.emailAdd"
@@ -168,19 +157,16 @@
           required
         />
       </div>
-
       <button type="submit" class="btn btn-primary">Save Changes</button>
-      <button type="button" class="btn btn-secondary" @click="clearEditedUser">
+      <button type="button" class="btn btn-secondary" @click="clearEditedUser, addUser()">
         Cancel
       </button>
     </form>
   </div>
 </template>
-
 <script>
 import Swal from 'sweetalert2';
 import { mapGetters } from "vuex";
-
 export default {
   data() {
     return {
@@ -190,15 +176,15 @@ export default {
         userAge: "",
         userGender: "",
         emailAdd: "",
+        userPass: "",
         userProfile: "",
       },
-      editedUser: null,
+      editedUser: null
     };
   },
   computed: {
     ...mapGetters(["getUsers"]),
   },
-
   // computed: {
   //   ...mapGetters(["getUsers"]),
   // },
@@ -266,7 +252,6 @@ export default {
           text: 'Failed to update user. Please try again.',
         });
       }
-      
     },
     clearForm() {
       this.formData = {
@@ -287,13 +272,11 @@ export default {
   },
 };
 </script>
-
 <style scoped>
 table {
   width: 100%;
   border-collapse: collapse;
 }
-
 th {
   background-color: lightgray;
 }
@@ -302,16 +285,13 @@ td {
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
-
 tr:hover {
-  background-color: #f2f2f2;
+  background-color: #F2F2F2;
 }
-
 img {
   width: 150px;
   height: 150px;
 }
-
 @media screen and (max-width: 480px) {
   .mainUserCard {
     display: flex;
@@ -342,7 +322,6 @@ img {
     width: 200px !important;
   }
 }
-
 .addUseForm {
   display: flex;
   /* max-width: 600px;s */
@@ -354,13 +333,11 @@ img {
   align-items: center;
   padding-bottom: 30px;
 }
-
 .addUseForm-inputs {
   display: flex;
   flex-direction: column;
   width: 100px;
 }
-
 .addUseForm-save {
   width: 80px;
   height: 40px;
