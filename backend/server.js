@@ -16,14 +16,7 @@ app.use(express.json());
 app.use(express.static('public'));
 app.use(cookieParser());
 
-
-const corsOptions = {
-  origin: ['http://localhost:8080', 'https://nodejseomp-1.onrender.com'],
-  methods: ['GET', 'POST', 'PATCH', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 
 
 app.use(UserRouter);
